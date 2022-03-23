@@ -9,13 +9,14 @@ import {
   Vibration,
 } from "react-native";
 import { dynamicStyles } from "./styles";
+import { Searchbar } from "react-native-paper";
 
 export const RestaurantList = () => {
   const styles = dynamicStyles();
   return (
     <>
       <View style={styles.search}>
-        <Text>search</Text>
+        <Searchbar placeholder="search" />
       </View>
       <View style={styles.list}>
         <Text>list</Text>

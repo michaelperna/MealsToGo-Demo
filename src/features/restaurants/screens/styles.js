@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const dynamicStyles = () => {
   return StyleSheet.create({
     search: {
-      backgroundColor: "green",
+      backgroundColor: "#fbf8f5",
       padding: 16,
     },
     list: {

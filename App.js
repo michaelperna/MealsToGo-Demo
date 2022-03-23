@@ -7,7 +7,7 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import { RestaurantList } from "./src/components/RestaurantList/RestaurantList";
+import { RestaurantList } from "./src/features/restaurants/screens/restaurants.screen";
 
 export default function App() {
   return (
