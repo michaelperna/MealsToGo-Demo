@@ -3,13 +3,16 @@ import { View } from "react-native";
 import styled from "styled-components/native";
 import { Searchbar } from "react-native-paper";
 import { LocationContext } from "../../../services/location/location.context";
+import { SafeArea } from "../../../utils/components/safe-area.component";
 
 const SearchContainer = styled(View)`
-  background-color: ${(props) => props.theme.colors.LPcolors.LPcream};
   padding: ${(props) => props.theme.space[3]};
+  position: absolute;
+  width: 100%;
+  z-index: 999;
 `;
 
-export const Search = ({ isFavoritesToggled, onFavoritesToggled }) => {
+export const Search = () => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
   useEffect(() => {
@@ -18,19 +21,20 @@ export const Search = ({ isFavoritesToggled, onFavoritesToggled }) => {
 
   return (
     <SearchContainer>
-      <Searchbar
-        icon={isFavoritesToggled ? "heart" : "heart-outline"}
-        onIconPress={onFavoritesToggled}
-        placeholder="Search for a location"
-        selectionColor={"#679c92"}
-        value={searchKeyword}
-        onSubmitEditing={() => {
-          search(searchKeyword);
-        }}
-        onChangeText={(text) => {
-          setSearchKeyword(text);
-        }}
-      />
+      <SafeArea>
+        <Searchbar
+          placeholder="Search for a location"
+          selectionColor={"#679c92"}
+          icon="map"
+          value={searchKeyword}
+          onSubmitEditing={() => {
+            search(searchKeyword);
+          }}
+          onChangeText={(text) => {
+            setSearchKeyword(text);
+          }}
+        />
+      </SafeArea>
     </SearchContainer>
   );
 };

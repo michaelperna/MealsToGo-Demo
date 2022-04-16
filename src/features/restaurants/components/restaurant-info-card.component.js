@@ -1,7 +1,4 @@
 import React from "react";
-import styled from "styled-components/native";
-import { View, Image } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
@@ -18,6 +15,7 @@ import {
   Section,
   Icon,
 } from "./restaurant-info-card.styles";
+import { Favorite } from "../../../compontents/favorites/favorite.component";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -37,6 +35,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   return (
     <RestaurantCard elevation={10}>
+      <Favorite restaurant={restaurant} />
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Text variant="title">{name}</Text>

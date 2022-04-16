@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TransitionPresets } from "@react-navigation/stack";
 import { RestaurantScreen } from "../../features/restaurants/screens/restaurants.screen";
 import { RestaurantDetailScreen } from "../../features/restaurants/screens/restaurant-detail.screen";
+import { MapScreen } from "../../features/map/map.screen";
 
 const RestaurantStack = createNativeStackNavigator();
 export const RestaurantsNavigator = () => {
@@ -14,10 +15,12 @@ export const RestaurantsNavigator = () => {
         component={RestaurantScreen}
         options={{ headerShown: false }}
       />
+
       <RestaurantStack.Screen
         name="Restaurant Detail"
         component={RestaurantDetailScreen}
       />
+      <RestaurantStack.Screen name="Map" component={MapScreen} />
     </RestaurantStack.Navigator>
   );
 };
