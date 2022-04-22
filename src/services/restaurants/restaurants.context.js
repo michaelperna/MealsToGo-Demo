@@ -24,9 +24,9 @@ export const RestaurantsContextProvider = ({ children }) => {
           setIsLoading(false);
           setRestaurants(results);
         })
-        .catch((err) => {
+        .catch((e) => {
           setIsLoading(false);
-          setError(err);
+          setError(e);
         });
     }, 2000);
   };

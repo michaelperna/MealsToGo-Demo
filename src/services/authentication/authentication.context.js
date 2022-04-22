@@ -1,6 +1,7 @@
 import react, { useState, createContext } from "react";
 import { initializeApp } from "firebase/app";
-import { loginRequest } from "./authentication.service";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { firebaseConfig } from "./authentication.service";
 
 export const AuthenticationContext = createContext();
 
@@ -10,20 +11,33 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const onLogin = (email, password) => {
+    const auth = getAuth(app);
+    const app = initializeApp(firebaseConfig);
     setIsLoading(true);
-    loginRequest(email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((u) => {
         setUser(u);
         setIsLoading(false);
       })
       .catch((e) => {
         setIsLoading(false);
-        setError(e);
+        const eS = e.toString();
+
+        if (eS.includes("invalid-email")) {
+          setError("Error: Invalid e-mail address");
+        } else if (eS.includes("internal-error")) {
+          setError("Error: Something went wrong");
+        } else if (eS.includes("wrong-password")) {
+          setError("Error: Incorrect password");
+        } else {
+          setError(eS);
+        }
       });
   };
   return (
     <AuthenticationContext.Provider
       value={{
+        isAuthenticated: !!user,
         user,
         isLoading,
         error,

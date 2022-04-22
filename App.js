@@ -12,15 +12,7 @@ import { LocationContextProvider } from "./src/services/location/location.contex
 import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
 import { Navigation } from "./src/infrustructure/navigation";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAeYelgnaXnjv80uVrOgTgho6NxYMeqOys",
-  authDomain: "mealstogo-39299.firebaseapp.com",
-  projectId: "mealstogo-39299",
-  storageBucket: "mealstogo-39299.appspot.com",
-  messagingSenderId: "970247134550",
-  appId: "1:970247134550:web:d9e883832de5670ecc4af7",
-};
+import { firebaseConfig } from "./src/services/authentication/authentication.service";
 
 if (getApps().length < 1) {
   initializeApp(firebaseConfig);

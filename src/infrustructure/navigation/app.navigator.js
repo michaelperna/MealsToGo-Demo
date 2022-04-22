@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { TransitionPresets } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
@@ -32,42 +31,40 @@ const createScreenOptions = ({ route }) => {
 };
 
 export const AppNavigator = () => (
-  <NavigationContainer>
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+  <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
 
-          if (route.name === "Restaurants") {
-            iconName = focused ? "md-restaurant" : "md-restaurant-outline";
-          } else if (route.name === "Map") {
-            iconName = focused ? "map" : "map-outline";
-          } else if (route.name === "Settings") {
-            iconName = focused ? "settings" : "settings-outline";
-          }
+        if (route.name === "Restaurants") {
+          iconName = focused ? "md-restaurant" : "md-restaurant-outline";
+        } else if (route.name === "Map") {
+          iconName = focused ? "map" : "map-outline";
+        } else if (route.name === "Settings") {
+          iconName = focused ? "settings" : "settings-outline";
+        }
 
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: "tomato",
-        tabBarInactiveTintColor: "gray",
-      })}
-    >
-      <Tab.Screen
-        name="Restaurants"
-        component={RestaurantsNavigator}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="Map"
-        component={MapScreen}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{ headerTitleAlign: "center" }}
-      />
-    </Tab.Navigator>
-  </NavigationContainer>
+        // You can return any component that you like here!
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+      tabBarActiveTintColor: "tomato",
+      tabBarInactiveTintColor: "gray",
+    })}
+  >
+    <Tab.Screen
+      name="Restaurants"
+      component={RestaurantsNavigator}
+      options={{ headerShown: false }}
+    />
+    <Tab.Screen
+      name="Map"
+      component={MapScreen}
+      options={{ headerShown: false }}
+    />
+    <Tab.Screen
+      name="Settings"
+      component={Settings}
+      options={{ headerTitleAlign: "center" }}
+    />
+  </Tab.Navigator>
 );
